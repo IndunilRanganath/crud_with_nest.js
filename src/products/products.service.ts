@@ -35,6 +35,11 @@ import { Injectable, NotFoundException } from "@nestjs/common";
             this.products[index] = updateProduct;
         }
 
+        removeProduct(prodctId: string){
+            const index = this.findProduct(prodctId)[1];
+            this.products.splice(index, 1);
+        }
+
         private findProduct(id: string): [Product, number]{
             const productIndex = this.products.findIndex(prod => prod.id === id)
             const product = this.products[productIndex];
